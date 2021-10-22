@@ -10,7 +10,6 @@ let page = 1;
 const url = `https://api.rawg.io/api/games?key=${key}&page_size=${quantity}`;
 const previous = document.getElementById('previous');
 const next = document.getElementById('next');
-const involvmentKey = 'vAUByXh5uun5dFWwLARx';
 
 const createLike = async () => {
 };
@@ -95,13 +94,6 @@ const populate = (data) => {
     });
   });
   getLikes();
-};
-
-const populateLikes = (data) => {
-  data.forEach((element) => {
-    const item = document.getElementById(element.item_id);
-    item.innerHTML = `Likes: ${element.likes}`;
-  });
 };
 
 const getData = async (url) => {
