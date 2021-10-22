@@ -7,7 +7,7 @@ const commentBtn = document.getElementById('commentBtn');
 
 async function createComment({ itemId, username, myComment }) {
   const comment = {
-    itemId,
+    "item_id":itemId,
     username,
     comment: myComment,
   };
@@ -82,7 +82,7 @@ commentBtn.addEventListener('click', async (event) => {
   event.preventDefault();
   if (name.checkValidity() && insight.checkValidity()) {
     const newComment = {
-      item_id: event.target.parentElement.parentElement.id,
+      itemId: event.target.parentElement.parentElement.id,
       username: name.value,
       myComment: insight.value,
     };
