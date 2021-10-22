@@ -97,4 +97,4 @@ commentBtn.addEventListener('click', async (event) => {
   }
 });
 
-export { createComment, getComments };
+export { createComment, getComments};
