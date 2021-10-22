@@ -10,6 +10,7 @@ let page = 1;
 const url = `https://api.rawg.io/api/games?key=${key}&page_size=${quantity}`;
 const previous = document.getElementById('previous');
 const next = document.getElementById('next');
+const involvmentKey = 'vAUByXh5uun5dFWwLARx';
 
 const createLike = async () => {
 };
@@ -24,6 +25,8 @@ const populate = (data) => {
     const likeButton = document.createElement('a');
     const commentButton = document.createElement('a');
     const rating = document.createElement('p');
+    const likes = document.createElement('p');
+    const rlcontainer = document.createElement('div');
 
     cardContainer.classList.add(
       'card',
@@ -48,6 +51,8 @@ const populate = (data) => {
 
     cardTitle.innerHTML = element.name;
     cardTitle.classList.add('card-title', 'fs-5');
+
+    rlcontainer.classList.add('d-flex', 'justify-content-between');
 
     rating.innerHTML = `Rating: ${element.rating}/5.0`;
     rating.classList.add('card-rating', 'mb-2');
@@ -75,7 +80,9 @@ const populate = (data) => {
       getComments(e.target.id);
     });
 
-    bodyContainer.append(cardTitle, rating, likeButton, commentButton);
+    rlcontainer.append(rating, likes);
+
+    bodyContainer.append(cardTitle, rlcontainer, likeButton, commentButton);
 
     cardContainer.append(imageContainer, bodyContainer);
 
@@ -86,6 +93,14 @@ const populate = (data) => {
     element.addEventListener('click', () => {
       createLike(element.name);
     });
+  });
+  getLikes();
+};
+
+const populateLikes = (data) => {
+  data.forEach((element) => {
+    const item = document.getElementById(element.item_id);
+    item.innerHTML = `Likes: ${element.likes}`;
   });
 };
 
@@ -125,4 +140,3 @@ const previousPage = () => {
 previous.addEventListener('click', previousPage);
 next.addEventListener('click', nextPage);
 getData(url);
-getLikes();
