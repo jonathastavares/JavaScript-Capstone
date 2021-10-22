@@ -16,6 +16,7 @@ When you click on comment a modal pops up which looks like following screenshot.
 - CSS
 - BootStrap
 - JAVASCRIPT
+- Webpack
 
 
 ## Getting Started
